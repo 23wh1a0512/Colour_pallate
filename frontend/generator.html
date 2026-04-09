@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palette Workspace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-protected-page="true">
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+    <section class="welcome-banner is-hidden" id="welcomeBanner" aria-live="polite">
+      <div class="welcome-copy">
+        <p class="eyebrow">Workspace Guide</p>
+        <h2>Build the palette here first</h2>
+        <p class="panel-text">
+          Pick a theme, generate colors, edit or lock the swatches you like, then save the
+          palette when it feels right.
+        </p>
+      </div>
+      <div class="welcome-actions">
+        <button class="button button-secondary" id="dismissWelcomeButton" type="button">
+          Got it
+        </button>
+      </div>
+    </section>
+
+    <div class="page-shell">
+      <header class="utility-bar">
+        <a class="brand-mark" href="./home.html">Palette Studio</a>
+        <div class="utility-actions">
+          <span class="user-pill" id="userGreeting">Welcome</span>
+          <button class="button button-secondary logout-button" type="button">Log Out</button>
+        </div>
+      </header>
+
+      <nav class="section-nav page-links" aria-label="Project pages">
+        <a class="section-link" href="./home.html">Home</a>
+        <a class="section-link" href="./generator.html">Workspace</a>
+        <a class="section-link" href="./actions.html">Actions</a>
+        <a class="section-link" href="./library.html">Saved Library</a>
+      </nav>
+
+      <header class="hero subpage-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Palette Workspace</p>
+          <h1>Create and edit your current palette.</h1>
+          <p class="hero-text">
+            This page is focused on generation, theme selection, swatch editing, naming, saving,
+            and copying the active palette.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-primary" id="generatePaletteButton">
+              Create New Palette
+            </button>
+            <a class="button button-secondary" href="./actions.html">Open Actions Page</a>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="orb orb-large"></div>
+          <div class="orb orb-small"></div>
+          <div class="hero-panel-content">
+            <div class="mini-card">
+              <span>Palette Theme</span>
+              <strong>Choose the style direction for your next palette.</strong>
+              <p class="mini-card-text">
+                Choose from warm neutrals, cool tones, bright palettes, nature-inspired sets, or a
+                full random mode.
+              </p>
+              <div class="theme-notes">
+                <div class="theme-note">
+                  <strong>Best for UI</strong>
+                  <span>Warm, Muted, Cool</span>
+                </div>
+                <div class="theme-note">
+                  <strong>Best for branding</strong>
+                  <span>Luxury, Vibrant, Sunset</span>
+                </div>
+                <div class="theme-note">
+                  <strong>Best for nature-inspired work</strong>
+                  <span>Earthy, Ocean, Forest</span>
+                </div>
+              </div>
+              <div class="theme-grid">
+                <button class="theme-chip is-active" type="button" data-theme="warm">Warm</button>
+                <button class="theme-chip" type="button" data-theme="earthy">Earthy</button>
+                <button class="theme-chip" type="button" data-theme="muted">Muted</button>
+                <button class="theme-chip" type="button" data-theme="luxury">Luxury</button>
+                <button class="theme-chip" type="button" data-theme="cool">Cool</button>
+                <button class="theme-chip" type="button" data-theme="vibrant">Vibrant</button>
+                <button class="theme-chip" type="button" data-theme="ocean">Ocean</button>
+                <button class="theme-chip" type="button" data-theme="forest">Forest</button>
+                <button class="theme-chip" type="button" data-theme="sunset">Sunset</button>
+                <button class="theme-chip" type="button" data-theme="random">Random</button>
+              </div>
+              <p class="mini-card-help">
+                Tip: choose a theme first, then lock the colors you like and generate again to
+                refine the palette faster.
+              </p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="content-grid single-column-grid">
+        <section class="panel featured-panel">
+          <div class="panel-heading">
+            <div class="featured-copy">
+              <p class="section-label">Current Palette</p>
+              <h2>Your active workspace palette</h2>
+              <p class="panel-text">
+                Generate colors, edit swatches, and save the final version to your MongoDB library.
+              </p>
+            </div>
+            <div class="featured-side">
+              <label class="count-picker count-card">
+                <span>Palette Size</span>
+                <input id="colorCountInput" type="number" min="3" max="8" value="5" />
+                <small class="helper-text">Choose 3 to 8 swatches before you generate.</small>
+              </label>
+            </div>
+          </div>
+
+          <div class="palette-strip" id="paletteStrip"></div>
+
+          <div class="palette-meta">
+            <div class="meta-card meta-main">
+              <div class="field-group">
+                <label for="paletteNameInput">Palette name</label>
+                <input
+                  id="paletteNameInput"
+                  type="text"
+                  maxlength="40"
+                  placeholder="Soft Dune Morning"
+                />
+                <small class="helper-text">Add a name before saving so you can recognize it later.</small>
+              </div>
+              <div class="inline-tools">
+                <button class="button button-ghost mini-action" id="suggestNameButton" type="button">
+                  Suggest Name
+                </button>
+                <button class="button button-ghost mini-action" id="resetPaletteButton" type="button">
+                  Reset Palette
+                </button>
+                <button class="button button-ghost mini-action" id="downloadPaletteButton" type="button">
+                  Download JSON
+                </button>
+                <button class="button button-ghost mini-action" id="importPaletteButton" type="button">
+                  Import JSON
+                </button>
+                <button class="button button-ghost mini-action" id="undoPaletteButton" type="button">
+                  Undo Palette
+                </button>
+                <input id="importPaletteInput" type="file" accept=".json,application/json" hidden />
+              </div>
+            </div>
+            <div class="meta-card meta-actions">
+              <label class="format-field">
+                <span>Display format</span>
+                <select id="formatSelect">
+                  <option value="hex">HEX</option>
+                  <option value="rgb">RGB</option>
+                  <option value="hsl">HSL</option>
+                </select>
+              </label>
+              <div class="action-row">
+                <button class="button button-primary" id="savePaletteButton">
+                  Save This Palette
+                </button>
+                <button class="button button-ghost" id="copyPaletteButton">
+                  Copy All Colors
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <p class="status-message" id="statusMessage">Generating your first palette...</p>
+        </section>
+      </main>
+    </div>
+
+    <template id="swatchTemplate">
+      <article class="swatch-card">
+        <div class="swatch-actions">
+          <button class="swatch-action swatch-lock" type="button">Lock</button>
+          <button class="swatch-action swatch-edit" type="button">Edit</button>
+          <button class="swatch-action swatch-refresh" type="button">Refresh</button>
+          <button class="swatch-action swatch-copy" type="button">Copy</button>
+        </div>
+        <input class="swatch-color-input" type="color" aria-label="Pick a custom swatch color" />
+        <div class="swatch-color"></div>
+        <div class="swatch-info">
+          <strong class="swatch-hex"></strong>
+          <span class="swatch-role"></span>
+        </div>
+      </article>
+    </template>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

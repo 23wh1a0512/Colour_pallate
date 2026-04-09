@@ -1,190 +1,146 @@
-# Colour Palette Generator
+# Color Palette Generator
 
-## Project Overview
+Color Palette Generator is a full-stack web application with a clearly separated `frontend` and `backend`. Users can sign up, log in, generate themed palettes, edit colors, save palettes, mark favorites, and export palette data in multiple formats.
 
-Colour Palette Generator is a full-stack web application that generates random HEX color palettes and allows users to store them in a MongoDB database.
+## Repository Layout
 
-This project demonstrates backend architecture using Node.js, Express, MongoDB, and Mongoose following an MVC structure.
+```text
+Colour_pallate/
+|-- frontend/
+|   |-- index.html
+|   |-- home.html
+|   |-- generator.html
+|   |-- actions.html
+|   |-- library.html
+|   |-- script.js
+|   `-- styles.css
+|-- backend/
+|   |-- src/
+|   |   |-- config/
+|   |   |-- controllers/
+|   |   |-- middleware/
+|   |   |-- models/
+|   |   |-- routes/
+|   |   |-- utils/
+|   |   |-- app.js
+|   |   `-- server.js
+|   |-- .env.example
+|   |-- .gitignore
+|   `-- package.json
+|-- package.json
+`-- README.md
+```
 
----
+## Frontend
+
+The `frontend/` folder contains the user interface for:
+
+- authentication pages
+- palette generation workspace
+- export and palette action tools
+- saved palette library management
+
+Key frontend files:
+
+- `frontend/index.html`
+- `frontend/home.html`
+- `frontend/generator.html`
+- `frontend/actions.html`
+- `frontend/library.html`
+- `frontend/script.js`
+- `frontend/styles.css`
+
+## Backend
+
+The `backend/` folder contains the Express and MongoDB application for:
+
+- authentication APIs
+- palette generation APIs
+- palette CRUD operations
+- favorite toggle support
+- MongoDB connection and validation
+
+Main backend features:
+
+- Express.js server
+- MongoDB with Mongoose
+- REST API routes
+- palette validation
+- user authentication flow
+
+## Setup
+
+### 1. Install backend dependencies
+
+```bash
+cd backend
+npm install
+```
+
+### 2. Create environment file
+
+```bash
+copy .env.example .env
+```
+
+Set:
+
+```env
+MONGO_URI=mongodb://127.0.0.1:27017/colourPaletteDB
+PORT=5000
+```
+
+### 3. Run from project root
+
+```bash
+cd ..
+npm run dev
+```
+
+Or start production mode:
+
+```bash
+npm start
+```
+
+Open:
+
+```text
+http://localhost:5000/
+```
+
+## API Endpoints
+
+- `GET /api/health`
+- `POST /api/auth/signup`
+- `POST /api/auth/login`
+- `GET /api/palette/generate`
+- `GET /api/palette`
+- `POST /api/palette`
+- `PUT /api/palette/:id`
+- `PATCH /api/palette/:id/favorite`
+- `DELETE /api/palette/:id`
 
 ## Features
 
-- Generate random HEX color palettes
-- Save palettes to MongoDB
-- Retrieve all saved palettes
-- RESTful API design
-- Scalable MVC architecture
-- Environment-based configuration
-
----
+- login and signup
+- themed palette generation
+- swatch editing, locking, refreshing, and copying
+- palette save, update, delete, and favorite
+- JSON, CSV, CSS variable, gradient, and Tailwind-style export
+- multi-page frontend structure with shared palette state
 
 ## Tech Stack
 
-### Backend
+- HTML
+- CSS
+- JavaScript
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
-- dotenv
-- CORS
-
-### Frontend (Optional / Extendable)
-- React.js
-- Axios
-- CSS
-
----
-
-## Project Structure
-
-```
-colour-palette-generator/
-│
-├── backend/
-│   ├── src/
-│   │   ├── config/
-│   │   │   └── db.js
-│   │   ├── controllers/
-│   │   │   └── paletteController.js
-│   │   ├── models/
-│   │   │   └── Palette.js
-│   │   ├── routes/
-│   │   │   └── paletteRoutes.js
-│   │   ├── utils/
-│   │   │   └── colorUtils.js
-│   │   └── app.js
-│   │
-│   ├── .env
-│   ├── package.json
-│   └── .gitignore
-│
-└── README.md
-```
-
----
-
-## Installation and Setup
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/23wh1a0512/Colour_pallate.git
-cd Colour_pallate/backend
-```
-
-### 2. Install Dependencies
-
-```bash
-npm install
-```
-
-### 3. Configure Environment Variables
-
-Create a `.env` file inside the backend folder:
-
-```
-PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/colourPaletteDB
-```
-
-Ensure MongoDB is running locally.
-
-### 4. Run the Server
-
-```bash
-npm run dev
-```
-
-Server will start at:
-
-```
-http://localhost:5000
-```
-
----
-
-## API Endpoints
-
-### Generate New Palette
-
-GET  
-`/api/palette/generate`
-
-Example Response:
-
-```json
-{
-  "palette": ["#A1B2C3", "#FF5733", "#123456", "#000000", "#FFFFFF"]
-}
-```
-
----
-
-### Save Palette
-
-POST  
-`/api/palette/save`
-
-Request Body:
-
-```json
-{
-  "name": "Ocean Theme",
-  "colors": ["#001F3F", "#0074D9", "#7FDBFF", "#39CCCC", "#3D9970"]
-}
-```
-
----
-
-### Get All Saved Palettes
-
-GET  
-`/api/palette/all`
-
----
-
-## Database Schema
-
-```javascript
-{
-  name: String,
-  colors: [String],
-  createdAt: Date,
-  updatedAt: Date
-}
-```
-
----
-
-## Architecture
-
-- MVC (Model-View-Controller) structure
-- Separate route handling
-- Centralized database configuration
-- Utility-based color generation logic
-- Environment variable management
-
----
-
-## Future Improvements
-
-- User authentication using JWT
-- Delete palette functionality
-- Search palettes by color
-- Favorite or like feature
-- Frontend UI with React
-- Deployment using cloud services
-
----
 
 ## Author
 
 Siri  
 GitHub: https://github.com/23wh1a0512
-
----
-
-## License
-
-This project is developed for educational and learning purposes.

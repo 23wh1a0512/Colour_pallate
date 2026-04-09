@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saved Palette Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-protected-page="true">
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+    <div class="page-shell">
+      <header class="utility-bar">
+        <a class="brand-mark" href="./home.html">Palette Studio</a>
+        <div class="utility-actions">
+          <span class="user-pill" id="userGreeting">Welcome</span>
+          <button class="button button-secondary logout-button" type="button">Log Out</button>
+        </div>
+      </header>
+
+      <nav class="section-nav page-links" aria-label="Project pages">
+        <a class="section-link" href="./home.html">Home</a>
+        <a class="section-link" href="./generator.html">Workspace</a>
+        <a class="section-link" href="./actions.html">Actions</a>
+        <a class="section-link" href="./library.html">Saved Library</a>
+      </nav>
+
+      <header class="hero subpage-hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Saved Palette Library</p>
+          <h1>Manage what you have already saved.</h1>
+          <p class="hero-text">
+            Search, favorite, rename, edit, delete, and reload saved palettes from MongoDB in one
+            dedicated library page.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-primary" id="refreshSavedButton">
+              Reload Saved Palettes
+            </button>
+            <a class="button button-secondary" href="./generator.html">Back To Workspace</a>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="orb orb-large"></div>
+          <div class="orb orb-small"></div>
+          <div class="hero-panel-content">
+            <div class="mini-card">
+              <span>Library Flow</span>
+              <strong>Keep your saved palettes organized.</strong>
+              <p class="mini-card-text">
+                The library page helps you search quickly, favorite important palettes, and load
+                them back into the workspace whenever you want to continue editing.
+              </p>
+              <div class="theme-notes">
+                <div class="theme-note">
+                  <strong>Search</strong>
+                  <span>Find palettes by name instantly.</span>
+                </div>
+                <div class="theme-note">
+                  <strong>Manage</strong>
+                  <span>Favorite, rename, edit colors, load, or delete saved entries.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="content-grid single-column-grid">
+        <section class="panel library-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-label">Saved Library</p>
+              <h2>Your stored palettes</h2>
+              <p class="panel-text">
+                Search, favorite, rename, edit, delete, or load any saved palette back into the
+                workspace.
+              </p>
+            </div>
+            <div class="library-tools">
+              <label class="search-field">
+                <span>Search saved palettes</span>
+                <input id="savedSearchInput" type="text" placeholder="Search by palette name" />
+              </label>
+              <label class="filter-toggle">
+                <input id="favoritesOnlyInput" type="checkbox" />
+                <span>Favorites only</span>
+              </label>
+            </div>
+          </div>
+          <div class="saved-palettes" id="savedPalettes"></div>
+          <p class="status-message" id="statusMessage">Saved palettes will appear here.</p>
+        </section>
+      </main>
+    </div>
+
+    <template id="savedPaletteTemplate">
+      <article class="saved-card">
+        <div class="saved-card-header">
+          <div>
+            <h3 class="saved-title"></h3>
+            <p class="saved-date"></p>
+          </div>
+          <div class="saved-actions">
+            <button class="button button-ghost saved-load" type="button">Load</button>
+            <button class="button button-ghost saved-favorite" type="button">Favorite</button>
+            <button class="button button-ghost saved-rename" type="button">Rename</button>
+            <button class="button button-ghost saved-delete" type="button">Delete</button>
+          </div>
+        </div>
+        <div class="saved-strip"></div>
+        <p class="saved-help">
+          Tap a saved swatch to copy it, or use Edit on the swatch to update and store a new color.
+        </p>
+      </article>
+    </template>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

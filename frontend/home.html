@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palette Studio Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-protected-page="true">
+    <div class="toast-stack" id="toastStack" aria-live="polite" aria-atomic="true"></div>
+    <div class="page-shell">
+      <header class="utility-bar">
+        <a class="brand-mark" href="./home.html">Palette Studio</a>
+        <div class="utility-actions">
+          <span class="user-pill" id="userGreeting">Welcome</span>
+          <button class="button button-secondary logout-button" type="button">Log Out</button>
+        </div>
+      </header>
+
+      <header class="hero hero-home">
+        <div class="hero-copy">
+          <p class="eyebrow">Palette Studio</p>
+          <h1>Move through your palette workflow page by page.</h1>
+          <p class="hero-text">
+            Your project now opens after login and is split into separate screens so your
+            generator, actions, and saved palette library each have their own focused space.
+          </p>
+          <div class="hero-steps">
+            <div class="step-chip">1. Open the workspace</div>
+            <div class="step-chip">2. Refine the palette</div>
+            <div class="step-chip">3. Manage saved palettes</div>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="./generator.html">Open Workspace</a>
+            <a class="button button-secondary" href="./library.html">Open Saved Library</a>
+          </div>
+        </div>
+        <div class="hero-panel home-panel">
+          <div class="orb orb-large"></div>
+          <div class="orb orb-small"></div>
+          <div class="hero-panel-content">
+            <div class="mini-card">
+              <span>Project Pages</span>
+              <strong>Navigate your project in clear separate sections.</strong>
+              <p class="mini-card-text">
+                Use the home page to jump into the generator workspace, the tools page, or the
+                saved library without everything feeling crowded.
+              </p>
+              <div class="theme-notes">
+                <div class="theme-note">
+                  <strong>Workspace</strong>
+                  <span>Generate, edit, save, and copy the current palette.</span>
+                </div>
+                <div class="theme-note">
+                  <strong>Actions</strong>
+                  <span>Sort, shuffle, export, and refine the palette separately.</span>
+                </div>
+                <div class="theme-note">
+                  <strong>Library</strong>
+                  <span>Search, favorite, rename, edit, or load saved palettes.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <nav class="section-nav page-links" aria-label="Project pages">
+        <a class="section-link" href="./generator.html">Palette Workspace</a>
+        <a class="section-link" href="./actions.html">Palette Actions</a>
+        <a class="section-link" href="./library.html">Saved Library</a>
+      </nav>
+
+      <main class="page-card-grid">
+        <section class="panel page-card">
+          <h2>Palette Workspace</h2>
+          <p class="panel-text">
+            Generate themed palettes, edit swatches, save the current palette, and keep your
+            active work in one focused place.
+          </p>
+          <a class="button button-primary" href="./generator.html">Go To Workspace</a>
+        </section>
+
+        <section class="panel page-card">
+          <h2>Palette Actions</h2>
+          <p class="panel-text">
+            Open the tools page to sort, shuffle, reverse, reset, and export your palette in
+            multiple useful formats.
+          </p>
+          <a class="button button-primary" href="./actions.html">Go To Actions</a>
+        </section>
+
+        <section class="panel page-card">
+          <h2>Saved Library</h2>
+          <p class="panel-text">
+            Review everything you saved in MongoDB and manage palettes with search, favorites,
+            rename, edit, delete, and load options.
+          </p>
+          <a class="button button-primary" href="./library.html">Go To Library</a>
+        </section>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

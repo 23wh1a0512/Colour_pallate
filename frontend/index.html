@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palette Studio Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body class="auth-body">
+    <div class="page-shell">
+      <header class="utility-bar auth-utility-bar">
+        <a class="brand-mark" href="./index.html">Palette Studio</a>
+      </header>
+
+      <main class="auth-layout">
+        <section class="hero-copy auth-copy">
+          <p class="eyebrow">Welcome</p>
+          <h1>Log in before you enter your palette studio.</h1>
+          <p class="hero-text">
+            Sign up once, then use the workspace, actions page, and saved library with a smoother
+            protected flow.
+          </p>
+          <div class="hero-steps">
+            <div class="step-chip">Secure sign up</div>
+            <div class="step-chip">Log in anytime</div>
+            <div class="step-chip">Continue to your project</div>
+          </div>
+          <div class="auth-note">
+            <strong>What you get after login</strong>
+            <p class="mini-card-text">
+              Access the generator workspace, refine palettes on a separate actions page, and
+              manage saved palettes in your library.
+            </p>
+          </div>
+        </section>
+
+        <section class="hero-panel auth-panel">
+          <div class="orb orb-large"></div>
+          <div class="orb orb-small"></div>
+          <div class="hero-panel-content">
+            <div class="auth-card">
+              <div class="auth-switcher" role="tablist" aria-label="Authentication mode">
+                <button class="auth-tab is-active" id="loginTab" type="button">Log In</button>
+                <button class="auth-tab" id="signupTab" type="button">Sign Up</button>
+              </div>
+
+              <form class="auth-form" id="loginForm">
+                <label class="field-group">
+                  <span>Email address</span>
+                  <input id="loginEmail" type="email" placeholder="you@example.com" required />
+                </label>
+                <label class="field-group">
+                  <span>Password</span>
+                  <input id="loginPassword" type="password" placeholder="Enter password" required />
+                </label>
+                <button class="button button-primary" id="loginButton" type="submit">
+                  Log In
+                </button>
+              </form>
+
+              <form class="auth-form is-hidden" id="signupForm">
+                <label class="field-group">
+                  <span>Full name</span>
+                  <input id="signupName" type="text" placeholder="Enter your full name" required />
+                </label>
+                <label class="field-group">
+                  <span>Email address</span>
+                  <input id="signupEmail" type="email" placeholder="you@example.com" required />
+                </label>
+                <label class="field-group">
+                  <span>Password</span>
+                  <input
+                    id="signupPassword"
+                    type="password"
+                    placeholder="At least 6 characters"
+                    required
+                  />
+                </label>
+                <button class="button button-primary" id="signupButton" type="submit">
+                  Create Account
+                </button>
+              </form>
+
+              <p class="auth-status" id="authStatus">Create an account or log in to continue.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
